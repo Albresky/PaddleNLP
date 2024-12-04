@@ -214,6 +214,9 @@ def bos_download(
             # Even if returning early like here, the lock will be released.
             return file_path
 
+        if not os.path.exists(file_path):
+               os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
         if resume_download:
             incomplete_path = file_path + ".incomplete"
 
